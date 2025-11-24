@@ -63,7 +63,7 @@ function draw() {
 
 
 
-  if (frameCount % 110 === 0) {
+  if (frameCount % 100 === 0) {//110
     let dx = random(-1, 1)
     let dy = random(-1, 1)
     // constrain(dx, low, high)
