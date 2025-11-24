@@ -13,13 +13,17 @@ function draw(){
 function balloon(t, x, y){
   const w = textWidth(t); // テキストの幅
   const h = textAscent() + textDescent(); // テキストの高さ
-  const p = 4; // 余白の大きさ (padding)
+  const p = 20; // 余白の大きさ (padding)
 
   push();
 
   // BLANK[1] 吹き出しの背景を先に描く
+  fill(0)
+  ellipse(100,100,w+p,h+p)
 
   // BLANK[2] 吹き出しの三角形を描く
+  fill(0)
+  triangle()
 
   // 吹き出しのテキストを次に描く
   textAlign(LEFT, CENTER);

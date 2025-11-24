@@ -1,6 +1,7 @@
 // たくさん出てくるアニメーション
 let balls;
-let targets; // 追加（ボールを当てる的）
+let targets;
+ // 追加（ボールを当てる的）
 
 function setup(){
   createCanvas(windowWidth, windowHeight);
@@ -22,8 +23,8 @@ function draw(){
     ellipse(t.x, t.y, t.size);
     t.x += t.vx;
     t.y += t.vy;
-    t.size += 2;
-  }
+    t.size += 1;
+    }
 
   // ボールのアニメーション
   for(let i = 0; i < balls.length; i++){
@@ -47,7 +48,13 @@ function draw(){
   // 補足：filter 関数を使うともっと簡単に書ける
   // balls = balls.filter(insideCanvas);
 
-  if(frameCount % 20 === 0) { // 20フレームごとに新しい的を追加する
+  if(frameCount % 20 === 0) { 
+    let dx =random(-4,4)
+    let dy =random(-4,4)
+    const c = { x: width/2, y: height/2, vx: dx, vy: dy, size: 20 };
+      targets.push(c);
+
+    // 20フレームごとに新しい的を追加する
     // BLANK[1] 新しい的オブジェクトを作成して targets 配列に追加しよう
   }
 
@@ -59,7 +66,10 @@ function draw(){
       let hit = false;
       for(let j = 0; j < balls.length; j++){ // すべてのボールと衝突判定
         let b = balls[j];
-        // BLANK[2]
+        let hankei = dist(t.x,t.y,b.x,b.y)
+        if(hankei<(b.size+t.size)/2){
+          hit=true
+        }
       }
       if(!hit) activeTargets.push(t); // 衝突していなければ生き残る
     }
